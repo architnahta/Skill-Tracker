@@ -1,0 +1,40 @@
+<div class="col-md-6 offset-md-3">
+    <h2 class="header1"> Search Associate </h2>
+    <div>
+        <input type="text" class="col-9 p-2" placeholder="Enter Name Here" [(ngModel)]="name"><p></p>
+        <input type="text" class="col-9 p-2" placeholder="Enter Associate Id Here" [(ngModel)]="id"><p></p>
+        <input type="text" class="col-9 p-2" placeholder="Enter Skill Name Here" [(ngModel)]="pattern"><p></p>
+    
+        <button class="btn btn-dark col-3 flex-shrink-1 ms-3" (click)="getAssociateByPattern()">Search</button>
+      </div>
+      <p></p>
+    
+    <div *ngIf="this.associates.length">
+        <h2 class="header2"> Associate List</h2>
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th> Associate Id</th>
+                    <th> Name </th>
+                    <th> Email Id</th>
+                    <th> Mobile </th>
+                    <th> Skills </th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let associate of associates" >
+                    <td> {{ associate.associateId }} </td>
+                    <td> {{ associate.name }} </td>
+                    <td> {{ associate.email }} </td>
+                    <td> {{ associate.mobile }} </td>
+                    <td>
+                        <tr *ngFor = "let skill of associate.skills">
+                            <li>{{skill.skillName}} : {{skill.skillRate}}</li>
+                        </tr>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div> 
